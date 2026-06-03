@@ -55,7 +55,7 @@ const ForgotPassword = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://api.cashpay.co.id/auth/request-reset-password",
+        "https://api.posttest.co.id/auth/request-reset-password",
         { email },
         { headers: { "X-Api-Key": "3f=Pr#g1@RU-nw=30" } }
       );

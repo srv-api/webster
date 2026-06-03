@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 // ======================================================
 //
 const axiosInstance = axios.create({
-  baseURL: "https://api.cashpay.co.id",
+  baseURL: "https://api.posttest.co.id",
   headers: {
     "Content-Type": "application/json",
   },
@@ -32,7 +32,7 @@ const refreshAuthToken = async () => {
 
   try {
     const response = await axios.post(
-      "https://api.cashpay.co.id/auth/refresh",
+      "https://api.posttest.co.id/auth/refresh",
       { refresh_token: refreshToken },
       {
         headers: {

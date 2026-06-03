@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const API_BASE_URL = 'https://api.cashpay.co.id/merchant';
+const API_BASE_URL = 'http://localhost:2388/merchant';
 
 // Mendapatkan token dari cookie
 const getTokenFromCookie = () => Cookies.get('token');
@@ -14,7 +14,7 @@ const refreshAuthToken = async () => {
 
     try {
         const response = await axios.post(
-            'https://api.cashpay.co.id/auth/refresh',
+            'http://localhost:2356/auth/refresh',
             { refresh_token: refreshToken },
             {
                 headers: {

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
-  FaSearch,
+  FaHouseUser,
   FaUser,
   FaShoppingCart,
   FaBoxOpen,
@@ -60,8 +60,8 @@ const location = useLocation();
   const [openMenu, setOpenMenu] = useState(null);
   // Static menu
   const staticMenuItems = [
-    { label: "Search", to: `${basePath}/search`, icon: <FaSearch /> },
-    { label: "Products", to: `${basePath}/product/list`, icon: <FaBoxOpen /> },
+    { label: "Home", to: `${basePath}/d/beranda`, icon: <FaHouseUser /> },
+    { label: "Results", to: `${basePath}/result/list`, icon: <FaBoxOpen /> },
     { label: "Category", to: `${basePath}/category/list`, icon: <FaTags /> },
     { label: "Merk", to: `${basePath}/merk/list`, icon: <FaTrademark /> },
     { label: "Discount", to: `${basePath}/discount/list`, icon: <FaPercent /> },

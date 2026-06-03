@@ -5,7 +5,7 @@ import Navbar from "../../../components/navbar/Navbar";
 import BlogSidebar from "./BlogSidebar";
 import text from "../../../locales/text";
 
-const API_URL = "https://api.cashpay.co.id/web/news";
+const API_URL = "http://localhost:1236/web/news";
 
 export default function BlogDetail() {
   const { slug } = useParams();
@@ -143,7 +143,7 @@ export default function BlogDetail() {
           <img
             src={
               blog.file_path
-                ? `https://api.cashpay.co.id/web/${blog.file_path}`
+                ? `http://localhost:1236/web/${blog.file_path}`
                 : "https://via.placeholder.com/800x400"
             }
             alt={blog.title}

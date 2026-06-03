@@ -1,0 +1,121 @@
+/* ButtonGroup.css */
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, #f6f6f6 0%, #FFFFFF 100%);
+  border-radius: 16px;
+  margin: 20px;
+}
+
+.btn {
+  position: relative;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+}
+
+/* Button Design */
+.dashboard-btn,
+.create-btn {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 14px 32px;
+  box-shadow: 0 1px 3px rgba(64, 66, 68, 0.1);
+  transition: none;
+  position: relative;
+  border: 1px solid #E5E7EB;
+}
+
+/* Button Content */
+.btn-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4F46E5;
+}
+
+.btn-text {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #4F46E5;
+}
+
+.create-btn .btn-text {
+  color: #10B981;
+}
+
+.create-btn .btn-icon {
+  color: #10B981;
+}
+
+/* Dashboard Button */
+.dashboard-btn {
+  border-bottom: 2px solid #4F46E5;
+}
+
+/* Create Button */
+.create-btn {
+  border-bottom: 2px solid #10B981;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .btn-wrapper {
+    gap: 20px;
+    padding: 30px 15px;
+    margin: 15px;
+  }
+  
+  .dashboard-btn,
+  .create-btn {
+    padding: 10px 24px;
+  }
+  
+  .btn-text {
+    font-size: 16px;
+  }
+  
+  .btn-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-wrapper {
+    flex-direction: column;
+    gap: 16px;
+    padding: 25px 15px;
+  }
+  
+  .dashboard-btn,
+  .create-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .btn-text {
+    font-size: 14px;
+  }
+}
+
+/* Focus Styles */
+.dashboard-btn:focus-visible,
+.create-btn:focus-visible {
+  outline: 2px solid #4F46E5;
+  outline-offset: 2px;
+}

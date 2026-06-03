@@ -32,7 +32,7 @@ const ForgotPassword = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://api.cashpay.co.id/auth/forgotpassword",
+        "https://api.posttest.co.id/auth/forgotpassword",
         { email },
         { headers: { "X-Api-Key": "3f=Pr#g1@RU-nw=30" } }
       );

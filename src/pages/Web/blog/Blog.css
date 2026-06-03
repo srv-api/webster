@@ -17,7 +17,7 @@
   grid-template-columns: 1fr 300px;
   gap: 140px;
   align-items: start;
-  padding-top: 50px; /* navbar + breathing space */
+  padding-top: 110px; /* navbar + breathing space */
 }
 
 /* =========================

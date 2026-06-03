@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -9,13 +9,22 @@ const Signup = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // 🔹 Deteksi bahasa dari URL
   const currentLang = location.pathname.startsWith("/id") ? "id" : "en";
   const [language, setLanguage] = useState(currentLang);
   const t = signupLocales[language];
 
   const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState(""); // Tambahkan state untuk username
   const [loading, setLoading] = useState(false);
+
+  // Ambil username dari URL query parameter
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const usernameParam = queryParams.get("username");
+    if (usernameParam) {
+      setUsername(usernameParam);
+    }
+  }, [location]);
 
   const elementStyle = {
     width: "320px",
@@ -57,7 +66,8 @@ const Signup = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate(`/${language}/signup/form`, { state: { fullName } });
+      // Kirim username juga ke halaman berikutnya
+      navigate(`/${language}/signup/form`, { state: { fullName, username } });
     }, 600);
   };
 
@@ -82,6 +92,23 @@ const Signup = () => {
 
       <h2 style={{ color: "#333", fontWeight: "bold", marginBottom: "5px" }}>{t.title}</h2>
       <h4 style={{ marginBottom: "30px", color: "#333", fontWeight: "normal" }}>{t.subtitle}</h4>
+
+      {/* Tampilkan username yang dipilih jika ada */}
+      {username && (
+        <div style={{ 
+          marginBottom: "20px", 
+          padding: "10px", 
+          backgroundColor: "#f0f0f0", 
+          borderRadius: "30px",
+          width: "320px",
+          textAlign: "center"
+        }}>
+          <span style={{ color: "#333" }}>
+            {language === "id" ? "Username: " : "Username: "}
+            <strong style={{ color: "#52796f" }}>kirim.co/{username}</strong>
+          </span>
+        </div>
+      )}
 
       <form style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <input

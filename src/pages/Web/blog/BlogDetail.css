@@ -7,6 +7,7 @@
   padding: 0 20px;
   display: grid;
   grid-template-columns: 3fr 1fr; /* content | sidebar */
+    padding-top: 110px; /* navbar + breathing space */
   gap: 40px;
 }
 
@@ -107,6 +108,14 @@
   border-radius: 6px;
   border: 1px solid #ddd;
   font-size: 14px;
+  background-color: #ffffff; /* Added white background */
+}
+
+.blog-comment-form input:focus,
+.blog-comment-form textarea:focus {
+  outline: none;
+  border-color: #0a66ff;
+  box-shadow: 0 0 0 2px rgba(10, 102, 255, 0.1);
 }
 
 .blog-comment-form button {

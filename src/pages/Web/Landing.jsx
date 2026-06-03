@@ -1,26 +1,22 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import "./LandingPage.css";
 import text from "../../locales/text";
-import ChatWidget from "../../components/widget/ChatWidget";
 import Navbar from "../../components/navbar/Navbar";
 import Hero from "../../components/hero/Hero";
 import About from "../../components/about/About";
 import Footer from "../../components/footer/Footer";
 import FAQ from "../../components/faq/FAQ";
-import TrackingList from "../../components/tracking/TrackingList";
 import { trackPackage } from "../../services/tracking/trackingApi";
-import addImage from "../../assets/add.png";
-// import scanImage from "../../assets/scan1.png";
-// import dashboard1 from "../../assets/dashboard1.png";
-
+import Vision from "../../components/vision/Vision";
+import ModalLogin from "./ModalLogin"; // IMPORT MODAL
 
 export default function LandingPage() {
   const heroRef = useRef(null);
-  // const aboutRef = useRef(null);
-  // const priceRef = useRef(null);
+  const resiRef = useRef(null);
+  const aboutRef = useRef(null);
   const trackingRef = useRef(null);
   const faqRef = useRef(null);
+  const visionRef = useRef(null);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,6 +27,7 @@ export default function LandingPage() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // STATE MODAL
 
   const [tracking, setTracking] = useState({
     courier: "",
@@ -39,43 +36,47 @@ export default function LandingPage() {
   });
 
   const handleTrack = async ({ courier, resi }) => {
-  try {
-    setLoading(true);
-    setError("");
+    try {
+      setLoading(true);
+      setError("");
 
-    const result = await trackPackage({ courier, resi });
+      const result = await trackPackage({ courier, resi });
 
-    setTracking({
-      courier,
-      resi,
-      data: result.data, // simpan semua data
-    });
-
-    setTimeout(() => {
-      trackingRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+      setTracking({
+        courier,
+        resi,
+        data: result.data,
       });
-    }, 150);
-  } catch (err) {
-    setError("Gagal mengambil data resi");
-    setTracking({ courier: "", resi: "", data: null });
-  } finally {
-    setLoading(false);
-  }
-};
 
+      setTimeout(() => {
+        trackingRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 150);
+    } catch (err) {
+      setError("Gagal mengambil data resi");
+      setTracking({ courier: "", resi: "", data: null });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLoginSuccess = () => {
+    console.log("Login success");
+    // Refresh user state atau redirect
+  };
 
   return (
     <div className="landing-container">
-      {/* NAVBAR */}
+      {/* NAVBAR - tambahkan prop untuk membuka modal */}
       <Navbar
         heroRef={heroRef}
         faqRef={faqRef}
-        // aboutRef={aboutRef}
-        // priceRef={priceRef}
+        aboutRef={aboutRef}
         language={language}
         t={t}
+        onLoginClick={() => setIsLoginModalOpen(true)} // PASS FUNCTION
       />
 
       {/* HERO */}
@@ -86,89 +87,13 @@ export default function LandingPage() {
         {loading && <p style={{ textAlign: "center" }}>Loading...</p>}
         {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
 
-        {tracking.courier && tracking.resi && (
-          <TrackingList
-            courier={tracking.courier}
-            resi={tracking.resi}
-            data={tracking.data}
-          />
-        )}
-      
-      {/* About */}
-      {/* <About aboutRef={aboutRef} t={t} /> */}
+       
 
-      {/* Body About */}
-      {/* <section className="section about">
-        <div className="about-container">
-          <div className="about-image">
-            <img src={dashboard1} alt="About" />
-          </div>
-          <div className="about-text">
-            <h2>{t.aboutTitle}</h2>
-            <p>{t.aboutP1}</p>
-            <p>{t.aboutP2}</p>
-          </div>
-        </div>
-      </section> */}
-         {/* MISSION */}
-      {/* <section className="section mission">
-        <div className="mission-container">
-          <div className="mission-image">
-            <img src={scanImage} alt="Mission" />
-          </div>
-          <div className="mission-text">
-            <h2>{t.missionTitle}</h2>
-            <p>{t.missionP1}</p>
-            <p>{t.missionP2}</p>
-          </div>
-        </div>
-      </section> */}
+        {/* VISION */}
+        <Vision visionRef={visionRef} />
 
-      {/* VISION */}
-      {/* <section className="section vision">
-        <div className="vision-container">
-          <div className="vision-text">
-            <h2>{t.visionTitle}</h2>
-            <p>{t.visionP1}</p>
-            <p>{t.visionP2}</p>
-          </div>
-          <div className="vision-image">
-            <img src={addImage} alt="Vision" />
-          </div>
-        </div>
-      </section> */}
-      {/* PRICING */}
-      {/* <Pricing priceRef={priceRef} language={language} />    */}
-      {/* MISSION */}
-      {/* <section className="section mission">
-        <div className="mission-container">
-          <div className="mission-image">
-            <img src={scanImage} alt="Mission" />
-          </div>
-          <div className="mission-text">
-            <h2>{t.missionTitle}</h2>
-            <p>{t.missionP1}</p>
-            <p>{t.missionP2}</p>
-          </div>
-        </div>
-      </section> */}
-
-      {/* VISION */}
-      {/* <section className="section vision">
-        <div className="vision-container">
-          <div className="vision-text">
-            <h2>{t.visionTitle}</h2>
-            <p>{t.visionP1}</p>
-            <p>{t.visionP2}</p>
-          </div>
-          <div className="vision-image">
-            <img src={addImage} alt="Vision" />
-          </div>
-        </div>
-      </section> */}
-      {/* PRICING */}
-      {/* <Pricing priceRef={priceRef} language={language} /> */}
-
+        {/* About */}
+        <About aboutRef={aboutRef} t={t} />
       </div>
 
       {/* FAQ */}
@@ -176,7 +101,13 @@ export default function LandingPage() {
 
       {/* FOOTER */}
       <Footer language={language} />
-      <ChatWidget />
+
+      {/* MODAL LOGIN */}
+      <ModalLogin
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+        onLogin={handleLoginSuccess}
+      />
     </div>
   );
 }

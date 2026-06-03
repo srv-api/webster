@@ -22,6 +22,7 @@ const text = {
     heroTitle: "Power your future with Cashier Payment",
     heroDesc:
       "Smart, Secure, Simple Point Of Sale. Simplifying payments one transaction at a time.",
+    intro: "Make your classroom or quiz nights with friends way more fun and competitive at",
     ourFeatures: "Our Features",
     f1: "Fast Performance",
     f1desc: "Optimized systems that run efficiently and sustainably.",
@@ -79,7 +80,9 @@ faqA5: "The shipment status may not be updated yet because the courier data is n
     businessName:"Nama Bisnis",
     send: "Kirim",
     price: "Harga",
-    heroTitle: "Kirim Dan Tracking Paket Kamu Sampai Ke Tujuan",
+    heroTitle: "Post",
+    introAfter:"Buat link kamu sekarang dan bagikan ke semua orang!",
+    intro:"Bikin suasana kelas atau kuis bareng teman jadi jauh lebih seru dan kompetitif di",
     heroDesc:
       "Cek Resi JNE, J&T, SiCepat, AnterAja, Pos & Yang lainya.",
     ourFeatures: "Fitur Kami",
@@ -106,11 +109,14 @@ faqA5: "The shipment status may not be updated yet because the courier data is n
       "Misi kami di CashPay adalah menyederhanakan proses pembayaran sambil mendorong inovasi, transparansi, dan efisiensi.",
     missionP2:
       "Kami ingin memberdayakan setiap bisnis untuk mengelola transaksi dengan teknologi canggih.",
-    visionTitle: "Manajemen Stok",
-    visionP1:
-      "Kami membayangkan masa depan di mana setiap bisnis dapat mengakses solusi pembayaran yang cerdas, aman, dan berkelanjutan.",
-    visionP2:
-      "CashPay berkomitmen menjadi pelopor transformasi digital dengan menyediakan alat bantu yang memudahkan pertumbuhan bisnis.",
+visionTitle: "Order Otomatis ke WhatsApp",
+visionP1:"Setiap tombol “Beli” akan langsung mengarahkan pelanggan ke WhatsApp kamu dengan format pesan.",
+visionP1:"1. Customer memilih produk",
+visionP2:"2. Customer menentukan jumlah dan varian (jika tersedia)",
+visionP3:"3. Customer klik tombol “Beli Sekarang”",
+visionP4:"4. Sistem otomatis mengarahkan ke WhatsApp dengan pesan yang sudah diformat",
+visionP5:"5. Admin menerima detail pesanan lengkap tanpa perlu input ulang",
+
     privacy: "Kebijakan Privasi",
     faqTitle: "Pertanyaan yang Sering Diajukan (FAQ)",
 faqQ1: "Apa itu Kirim?",

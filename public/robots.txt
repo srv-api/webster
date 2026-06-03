@@ -1,4 +1,4 @@
-# robots.txt for https://cashpay.co.id
+# robots.txt for https://posttest.co.id
 # Valid for Google, Bing, and major crawlers
 
 User-agent: *
@@ -29,4 +29,4 @@ Disallow: /
 User-agent: meta-externalagent
 Disallow: /
 
-Sitemap: https://cashpay.co.id/sitemap.xml
+Sitemap: https://posttest.co.id/sitemap.xml

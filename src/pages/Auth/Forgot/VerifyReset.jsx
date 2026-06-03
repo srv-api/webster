@@ -67,7 +67,7 @@ const VerifyReset = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        `https://api.cashpay.co.id/auth/verify-reset?token=${token}`,
+        `https://api.posttest.co.id/auth/verify-reset?token=${token}`,
         { otp: code },
         { headers: { "X-Api-Key": "3f=Pr#g1@RU-nw=30" } }
       );
@@ -89,7 +89,7 @@ const VerifyReset = () => {
   const handleResendOtp = async () => {
     setResending(true);
     try {
-      await axios.post("https://api.cashpay.co.id/auth/request-reset-password", {
+      await axios.post("https://api.posttest.co.id/auth/request-reset-password", {
         email: localStorage.getItem("lastEmail") || "", // bisa ubah sesuai data yang disimpan
       });
       toast.success("A new OTP has been sent!");

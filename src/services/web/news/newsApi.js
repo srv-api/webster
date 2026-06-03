@@ -4,14 +4,13 @@ import Cookies from "js-cookie";
 /* =====================================================
    CONFIG
 ===================================================== */
-const BASE_URL = "https://api.cashpay.co.id";
+const BASE_URL = "http://localhost:1236";
 
 /* =====================================================
    AXIOS INSTANCE
 ===================================================== */
 const api = axios.create({
   baseURL: BASE_URL,
-  withCredentials: true,
 });
 
 /* =====================================================
@@ -35,7 +34,6 @@ const refreshAuthToken = async () => {
         "x-api-key": "3f=Pr#g1@RU-nw=30",
         Authorization: `Bearer ${refreshToken}`,
       },
-      withCredentials: true,
     }
   );
 
@@ -98,12 +96,10 @@ export const createNews = async (payload) => {
   formData.append("excerpt", payload.excerpt);
   formData.append("status", payload.status);
 
-  // 🔥 INI NIH ANJING
   formData.append("file", payload.image);              // FILE
   formData.append("file_name", payload.image.name);     // FILE_NAME
   formData.append("file_path", "news");                 // FILE_PATH
 
-  // CEK KALO MASIH RAGU
   console.log([...formData.entries()]);
 
   return api.post("/web/create/news", formData);

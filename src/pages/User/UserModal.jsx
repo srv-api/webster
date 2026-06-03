@@ -16,12 +16,8 @@ const UserModal = ({ setShowModal, onSuccess }) => {
     min_stock: "",
     description: "",
     status: "active",
-    merk_id: "",
-    category_id: "",
   });
 
-  const [merkList, setMerkList] = useState([]);
-  const [categoryList, setCategoryList] = useState([]);
 
   useEffect(() => {
     const loadDropdownData = async () => {
@@ -53,8 +49,6 @@ const UserModal = ({ setShowModal, onSuccess }) => {
         min_stock: parseInt(newUser.min_stock) || 0,
         description: newUser.description,
         status: newUser.status === "active" ? 1 : 2,
-        merk_id: newUser.merk_id || null,
-        category_id: newUser.category_id || null,
 
       };
 
@@ -116,91 +110,7 @@ const UserModal = ({ setShowModal, onSuccess }) => {
               required
             />
 
-            {/* Merek & Kategori */}
-           <div style={rowGroup}>
-              <div style={{ flex: 1 }}>
-                <label style={labelStyle}>Merek</label>
-                <select
-                  value={newUser.merk_id}
-                  onChange={(e) =>
-                    setNewUser({ ...newUser, merk_id: e.target.value })
-                  }
-                  style={inputSmall}
-                  required
-                >
-                  <option value="">Pilih Merek</option>
-                  {merkList.map((merk) => (
-                    <option key={merk.id} value={merk.id}>
-                      {merk.merk_name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div style={{ flex: 1 }}>
-                <label style={labelStyle}>Kategori</label>
-                <select
-                  value={newUser.category_id}
-                  onChange={(e) =>
-                    setNewUser({ ...newUser, category_id: e.target.value })
-                  }
-                  style={inputSmall}
-                  required
-                >
-                  <option value="">Pilih Kategori</option>
-                  {categoryList.map((cat) => (
-                    <option key={cat.id} value={cat.id}>
-                      {cat.category_name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            {/* Harga, Stok, Minimal Stok (3 sejajar) */}
-            <div style={rowGroup3}>
-              <div style={{ flex: 1 }}>
-                <label style={labelStyle}>Harga (Rp)</label>
-                <input
-                  type="number"
-                  placeholder="150000"
-                  value={newUser.price}
-                  onChange={(e) =>
-                    setNewUser({ ...newUser, price: e.target.value })
-                  }
-                  style={inputSmall}
-                  required
-                />
-              </div>
-
-              <div style={{ flex: 1 }}>
-                <label style={labelStyle}>Stok</label>
-                <input
-                  type="number"
-                  placeholder="50"
-                  value={newUser.stock}
-                  onChange={(e) =>
-                    setNewUser({ ...newUser, stock: e.target.value })
-                  }
-                  style={inputSmall}
-                  required
-                />
-              </div>
-
-              <div style={{ flex: 1 }}>
-                <label style={labelStyle}>Minimal Stok</label>
-                <input
-                  type="number"
-                  placeholder="5"
-                  value={newUser.min_stock}
-                  onChange={(e) =>
-                    setNewUser({ ...newUser, min_stock: e.target.value })
-                  }
-                  style={inputSmall}
-                  required
-                />
-              </div>
-            </div>
+         
           </div>
 
           {/* Kolom Kanan */}

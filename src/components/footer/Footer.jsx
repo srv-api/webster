@@ -15,7 +15,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-top">
         <span>
-          © {new Date().getFullYear()} PT Kirim Integrasi Digital.
+          © {new Date().getFullYear()} POSTTEST .io
         </span>
       </div>
 
@@ -28,11 +28,11 @@ export default function Footer() {
 
       <div className="footer-social">
         <a
-          href="https://instagram.com/kirim_co"
+          href="https://instagram.com/posttest.io"
           target="_blank"
           rel="noopener noreferrer"
           className="footer-icon"
-          aria-label="Instagram Cashpay"
+          aria-label="Instagram PostTest"
         >
           <FaInstagram size={26} />
         </a>
@@ -42,7 +42,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className="footer-icon"
-          aria-label="Facebook Cashpay"
+          aria-label="Facebook PostTest"
         >
           <FaFacebook size={26} />
         </a>
@@ -58,11 +58,11 @@ export default function Footer() {
         </a>
 
         <a
-          href="https://www.linkedin.com/company/cashpay-link"
+          href="https://www.linkedin.com/company/posttest-link"
           target="_blank"
           rel="noopener noreferrer"
           className="footer-icon"
-          aria-label="LinkedIn Cashpay"
+          aria-label="LinkedIn PostTest"
         >
           <FaLinkedin size={26} />
         </a>

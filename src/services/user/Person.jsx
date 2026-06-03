@@ -2,7 +2,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const API_BASE_URL = "https://api.cashpay.co.id";
+const API_BASE_URL = "https://api.posttest.co.id";
 
 // Buat instance axios
 const Person = axios.create({

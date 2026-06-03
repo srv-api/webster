@@ -6,36 +6,77 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  position: sticky;
-  top: 0;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  z-index: 100;
+  position: fixed;
+  top: 20px;              /* jarak dari atas */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;             /* tidak full */
+  max-width: 1200px;
+  background: #fff;
+  backdrop-filter: blur(12px);
+  border-radius: 50px;    /* radius biar mengambang */
+  box-shadow: 0 15px 35px rgba(226, 226, 226, 0.08);
+
+  z-index: 1000;
   flex-wrap: wrap;
 }
+body {
+  padding-top: 120px;
+}
+
+
 
 /* Logo */
 /* ==============================
    LOGO
 ============================== */
-.logo-wrapper {
+.logo-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
-.logo-img {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-}
-
-.logo-text {
-  font-size: 1.4rem;
-  font-weight: 700;
+  position: relative;
+  font-weight: 900;
   color: #000;
-  letter-spacing: 0.5px;
+  line-height: 1;
+  font-family: "Nunito", sans-serif;
+}
+
+/* P */
+.logo-p {
+  font-size: 22px;
+}
+
+/* O hijau */
+.logo-o {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #C7FF2E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -2px;
+}
+
+.logo-o-inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* stTest */
+.logo-rest {
+  font-size: 22px;
+  margin-left: -2px;
+}
+
+/* io kecil */
+.logo-io {
+  font-size: 10px;
+  font-weight: 700;
+  position: relative;
+  top: -7px;
+  margin-left: 2px;
 }
 
 .service-dropdown {
@@ -124,19 +165,16 @@
 }
 
 .nav-links button:hover {
-  color: #ff3131;
+  color: #3a5a52;
 }
 
 /* Login button */
 .btn-login {
-  background: transparent;
-  border: 2px solid #000;
+  background: #C7FF2E;
   color: #000;
   padding: 10px 22px;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: 600;
-  transition: 0.3s;
 }
 
 /* Language toggle */

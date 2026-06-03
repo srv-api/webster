@@ -30,8 +30,8 @@ export default function PrivacyPolicy() {
           menghubungi kami melalui email berikut:
         </p>
         <p>
-          <a href="mailto:support@cashpay.com" className="contact-link">
-            support@cashpay.com
+          <a href="mailto:support@posttest.com" className="contact-link">
+            support@posttest.com
           </a>
         </p>
 

@@ -17,7 +17,7 @@ const refreshToken = async () => {
 
   try {
     const response = await axios.post(
-      "https://api.cashpay.co.id/auth/refresh",
+      "http://localhost:2356/auth/refresh",
       { refresh_token: rToken },
       {
         headers: {
@@ -61,14 +61,14 @@ const Personalization = () => {
   const fetchProfile = async () => {
     let token = getToken();
     try {
-      const res = await axios.get("https://api.cashpay.co.id/auth/profile", {
+      const res = await axios.get("http://localhost:2356/auth/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
       return res.data.data;
     } catch (err) {
       if (err.response?.status === 401) {
         token = await refreshToken();
-        const retryRes = await axios.get("https://api.cashpay.co.id/auth/profile", {
+        const retryRes = await axios.get("http://localhost:2356/auth/profile", {
           headers: { Authorization: `Bearer ${token}` },
         });
         return retryRes.data.data;
@@ -108,7 +108,7 @@ const Personalization = () => {
     let token = getToken();
     try {
       const res = await axios.put(
-        `https://api.cashpay.co.id/auth/profile/update?id=${data.id}`,
+        `http://localhost:2356/auth/profile/update?id=${data.id}`,
         {
           full_name: data.fullName,
           email: data.email,
@@ -122,7 +122,7 @@ const Personalization = () => {
         token = await refreshToken();
         try {
           const res = await axios.put(
-            `https://api.cashpay.co.id/auth/profile/update?id=${data.id}`,
+            `http://localhost:2356/auth/profile/update?id=${data.id}`,
             {
               full_name: data.fullName,
               email: data.email,

@@ -1,5 +1,5 @@
 const BASE_URL =
-  "https://api.cashpay.co.id/merchant/topup";
+  "https://api.posttest.co.id/merchant/topup";
 
 export async function chargeGopay(harga) {
   const res = await fetch(`${BASE_URL}/charge-gopay`, {

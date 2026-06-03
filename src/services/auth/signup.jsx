@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://api.cashpay.co.id";
+const API_BASE_URL = "http://localhost:2356";
 
 // instance axios (lebih rapi & reusable)
 const api = axios.create({
@@ -13,7 +13,7 @@ const api = axios.create({
 
 // 🔁 Resend OTP
 export const resendOtp = (token) => {
-  return api.post(`/resend-otp?token=${token}`);
+  return api.post(`/auth/resend-otp?token=${token}`);
 };
 
 // ✅ Verify OTP (kalau backend sudah ada)

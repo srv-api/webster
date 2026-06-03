@@ -19,8 +19,8 @@ const Merchant = () => {
   const [isChanged, setIsChanged] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const API_URL = "https://api.cashpay.co.id/merchant/get";
-  const REFRESH_URL = "https://api.cashpay.co.id/auth/refresh"; // ubah sesuai endpoint refresh token kamu
+  const API_URL = "http://localhost:2388/merchant/get";
+  const REFRESH_URL = "http://localhost:2356/auth/refresh"; // ubah sesuai endpoint refresh token kamu
 
   // 🔹 Ambil token dari cookie
   const getAccessToken = () => Cookies.get("token");
@@ -90,36 +90,40 @@ const Merchant = () => {
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = async () => {
-    if (!isChanged) return;
+const handleSave = async () => {
+  if (!isChanged) return;
 
-    try {
-      setLoading(true);
-      const res = await axios.put(
-        "https://api.cashpay.co.id/merchant/update",
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${getAccessToken()}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+  try {
+    setLoading(true);
 
-      if (res.data?.status) {
-        toast.success("✅ Data merchant berhasil disimpan!");
-        setOriginalData(data);
-        setIsChanged(false);
-      } else {
-        toast.error("❌ Gagal menyimpan perubahan");
+    const res = await axios.put(
+      "http://localhost:2388/merchant/update",
+      data, // body tetap dikirim
+      {
+        params: {
+          id: data.id, // ⬅️ kirim id sebagai query param
+        },
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+          "Content-Type": "application/json",
+        },
       }
-    } catch (err) {
-      console.error(err);
-      toast.error("Terjadi kesalahan saat menyimpan");
-    } finally {
-      setLoading(false);
+    );
+
+    if (res.data?.status) {
+      toast.success("✅ Data merchant berhasil disimpan!");
+      setOriginalData(data);
+      setIsChanged(false);
+    } else {
+      toast.error("❌ Gagal menyimpan perubahan");
     }
-  };
+  } catch (err) {
+    console.error(err);
+    toast.error("Terjadi kesalahan saat menyimpan");
+  } finally {
+    setLoading(false);
+  }
+};
 
   if (loading) return <p>Loading...</p>;
 
@@ -163,7 +167,7 @@ const Merchant = () => {
               name="merchant_name"
               value={data.merchant_name || ""}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px" }}
+              style={{ width: "100%", padding: "8px", color: "#000", backgroundColor: "#fff", border: "1px solid #ccc", borderRadius: "4px" }}
             />
           </label>
           <label style={{ flex: 1, display: "flex", flexDirection: "column", gap: "6px" }}>
@@ -173,7 +177,7 @@ const Merchant = () => {
               name="id_number"
               value={data.id_number || ""}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px" }}
+              style={{ width: "100%", padding: "8px", color: "#000", backgroundColor: "#fff", border: "1px solid #ccc", borderRadius: "4px" }}
             />
           </label>
         </div>
@@ -187,7 +191,7 @@ const Merchant = () => {
               name="city"
               value={data.city || ""}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px" }}
+              style={{ width: "100%", padding: "8px", color: "#000", backgroundColor: "#fff", border: "1px solid #ccc", borderRadius: "4px" }}
             />
           </label>
           <label style={{ flex: 1, display: "flex", flexDirection: "column", gap: "6px" }}>
@@ -197,7 +201,7 @@ const Merchant = () => {
               name="country"
               value={data.country || ""}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px" }}
+              style={{ width: "100%", padding: "8px", color: "#000", backgroundColor: "#fff", border: "1px solid #ccc", borderRadius: "4px" }}
             />
           </label>
         </div>
@@ -211,7 +215,7 @@ const Merchant = () => {
               value={data.address || ""}
               onChange={handleChange}
               rows={3}
-              style={{ width: "100%", padding: "8px", resize: "vertical" }}
+              style={{ width: "100%", padding: "8px", resize: "vertical", color: "#000", backgroundColor: "#fff", border: "1px solid #ccc", borderRadius: "4px" }}
               placeholder="Enter full address"
             />
           </label>
@@ -225,7 +229,7 @@ const Merchant = () => {
               name="currency_id"
               value={data.currency_id || ""}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px" }}
+              style={{ width: "100%", padding: "8px", color: "#000", backgroundColor: "#fff", border: "1px solid #ccc", borderRadius: "4px" }}
             >
               <option value="">-- Select Currency --</option>
               <option value="1">Rp</option>
@@ -239,7 +243,7 @@ const Merchant = () => {
               name="zip"
               value={data.zip || ""}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px" }}
+              style={{ width: "100%", padding: "8px", color: "#000", backgroundColor: "#fff", border: "1px solid #ccc", borderRadius: "4px" }}
             />
           </label>
           <label style={{ flex: 1, display: "flex", flexDirection: "column", gap: "6px" }}>
@@ -249,7 +253,7 @@ const Merchant = () => {
               name="phone"
               value={data.phone || ""}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px" }}
+              style={{ width: "100%", padding: "8px", color: "#000", backgroundColor: "#fff", border: "1px solid #ccc", borderRadius: "4px" }}
             />
           </label>
         </div>

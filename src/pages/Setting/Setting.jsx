@@ -40,19 +40,18 @@ const handleLogout = async () => {
 
   try {
     await axios.post(
-      "https://api.cashpay.co.id/auth/logout",
+      "http://localhost:2356/auth/logout",
       {},
-      { withCredentials: true }
     );
 
     // 🔥 Hapus cookie manual karena bisa diakses JS
     Cookies.remove("refresh_token");
     Cookies.remove("token");
-    localStorage.removeItem("token", { domain: ".cashpay.co.id", path: "/" });
+    localStorage.removeItem("token", { domain: ".posttest.co.id", path: "/" });
     toast.success("Logout successful", { autoClose: 1000 });
 
     setTimeout(() => {
-      window.location.replace("https://console.cashpay.co.id/login");
+      window.location.replace("https://console.posttest.co.id/login");
     }, 1000);
   } catch (err) {
     console.error(err);
@@ -160,6 +159,7 @@ const handleLogout = async () => {
                   border: "none",
                   cursor: "pointer",
                   borderRadius: "4px",
+                  color: activeMenu === item.key ? "#000" : "#626262",
                   fontSize: "12px",
                 }}
               >

@@ -7,6 +7,7 @@ export default function Navbar({
   heroRef,
   aboutRef,
   priceRef,
+  onLoginClick ,
   t,
 }) {
 
@@ -106,18 +107,19 @@ export default function Navbar({
   // ===============================
   return (
     <nav className="navbar">
-      <div className="logo-wrapper" onClick={handleLogoClick}>
-        <img
-          src="/56x56.png"
-          srcSet="/36x36.png 36w, /56x56.png 56w"
-          sizes="(max-width: 768px) 36px, 56px"
-          width="56"
-          height="56"
-          alt="Kirim Logo"
-          className="logo-img"
-        />
-        <span className="logo-text">Kirim</span>
+     <div className="logo-wrapper" onClick={handleLogoClick}>
+      <div className="logo-brand">
+        <span className="logo-p">P</span>
+
+        <span className="logo-o">
+          <span className="logo-o-inner"></span>
+        </span>
+
+        <span className="logo-rest">stTest</span>
+
+        <span className="logo-io">io</span>
       </div>
+    </div>
 
       {/* MOBILE TOGGLE */}
       <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
@@ -127,38 +129,11 @@ export default function Navbar({
       {/* RIGHT MENU */}
       <div className={`nav-right ${menuOpen ? "active" : ""}`}>
         <div className="nav-links">
-          {/* SERVICE DROPDOWN */}
-          <div
-            className="service-dropdown"
-            ref={dropdownRef}
-          >
-            <button
-              className="dropdown-trigger"
-              onClick={() => setServiceOpen(!serviceOpen)}
-            >
-              {t.service} ▾
-            </button>
-
-            {serviceOpen && (
-              <div className="dropdown-menu">
-                {services.map((item) => (
-                  <button
-                    key={item.key}
-                    onClick={() => goToService(item.path)}
-                  >
-                    {isEnglish ? item.label.en : item.label.id}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <button onClick={() => navigate(`${langPrefix}/topup`)}>
-            Top Up
-          </button>
-
           <button onClick={() => navigate(`${langPrefix}/blog`)}>
             Blog
+          </button>
+          <button onClick={() => navigate(`${langPrefix}/blog`)}>
+            Plans
           </button>
         </div>
 
@@ -186,7 +161,7 @@ export default function Navbar({
         </div>
 
         {/* LOGIN */}
-        <button className="btn-login" onClick={goToLogin}>
+        <button className="btn-login" onClick={onLoginClick || goToLogin}>
           {t.login}
         </button>
       </div>

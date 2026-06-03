@@ -15,7 +15,7 @@ const GoogleCallback = () => {
         }
 
         const res = await axios.post(
-          "https://api.cashpay.co.id/auth/web/google",
+          "https://api.posttest.co.id/auth/web/google",
           { code },
           { withCredentials: true }
         );
@@ -25,20 +25,20 @@ const GoogleCallback = () => {
 
         // ❌ Tanpa HttpOnly → bisa diakses JS
         Cookies.set("token", data.token, {
-          domain: ".cashpay.co.id",
+          domain: ".posttest.co.id",
           path: "/",
           secure: true,
           sameSite: "None",
         });
 
         Cookies.set("refresh_token", data.refresh_token, {
-          domain: ".cashpay.co.id",
+          domain: ".posttest.co.id",
           path: "/",
           secure: true,
           sameSite: "None",
         });
 
-        window.location.replace("https://console.cashpay.co.id/d/harbour");
+        window.location.replace("https://console.posttest.co.id/d/mylink");
       } catch (err) {
         console.error(err);
         window.location.replace("/login");

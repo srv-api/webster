@@ -1,173 +1,387 @@
-/* ======================================================
-   📦 RESI BOX
-====================================================== */
-.resi-box {
-  display: flex;
-  gap: 8px;
-  margin: 20px 0;
-  max-width: 400px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.resi-box input {
-  flex: 1;
-  padding: 10px 14px;        /* ⬅️ lebih kecil */
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 14px;           /* ⬅️ lebih kecil */
-  outline: none;
-}
-
-.resi-box input:focus {
-  border-color: #dc2626;     /* konsisten brand */
-}
-
-.resi-box button {
-  padding: 10px 16px;        /* ⬅️ lebih kecil */
-  border-radius: 8px;
-  border: none;
-  background: #dc2626;
-  color: #fff;
-  font-size: 14px;           /* ⬅️ lebih kecil */
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.2s ease;
-}
-
-.resi-box button:hover {
-  background: #e62b2b;
-}
-
-/* ======================================================
-   🚚 COURIER LIST
-====================================================== */
-.courier-list {
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.courier-list button {
-  padding: 8px 14px;         /* ⬅️ sedikit diperkecil */
-  border-radius: 18px;
-  border: 1px solid #ddd;
-  background: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.courier-list button:hover {
-  background: #dc2626;
-  color: #fff7f7;
-  border-color: #dc2626;
-}
-
-/* ======================================================
-   🦸 HERO SECTION
-====================================================== */
 .hero {
+  min-height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px; /* HANYA INI YANG DITAMBAH */
+}
+
+.hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Left Content */
+.hero-content {
+  max-width: 560px;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #C7FF2E;
+  margin-bottom: 32px;
+  font-weight: 500;
+  border-left: 2px solid #C7FF2E;
+  padding-left: 16px;
+  background: rgba(199, 255, 46, 0.05);
+  padding: 8px 16px;
+  border-radius: 0;
+}
+
+.hero-title {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+
+.hero-highlight {
+  font-weight: 700;
+  color: #C7FF2E;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-description {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #888;
+  margin-bottom: 40px;
+  font-weight: 350;
+  max-width: 460px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.hero-button {
+  background: #C7FF2E;
+  color: #0a0a0a;
+  border: none;
+  padding: 14px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.hero-button:hover {
+  background: #d4ff5c;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(199, 255, 46, 0.3);
+}
+
+/* Stats */
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  padding-top: 16px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 600;
+  color: #C7FF2E;
+  letter-spacing: -0.01em;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 0.5px;
+}
+
+/* Right Slider */
+.hero-slider {
+  position: relative;
+  height: 620px;
+  display: flex;
+  justify-content: flex-end;
+  perspective: 1000px;
+}
+
+.slider-container {
+  position: relative;
+  width: 380px;
+  height: 100%;
+}
+
+.slider-card {
+  position: absolute;
+  width: 100%;
+  background: #111;
+  border: 1px solid #222;
+  padding: 32px;
+  cursor: default;
+  will-change: transform, opacity, filter;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.slider-card.active {
+  background: #141414;
+  border-color: #2a2a2a;
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+}
+
+.slider-card.next,
+.slider-card.second-next {
+  pointer-events: none;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.card-number {
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.slider-card.active .card-number {
+  color: #C7FF2E;
+}
+
+.card-metric {
+  text-align: right;
+}
+
+.metric-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: #aaa;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.metric-label {
+  display: block;
+  font-size: 10px;
+  color: #444;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
+.slider-card.active .metric-value {
+  color: #C7FF2E;
+}
+
+/* Card Body */
+.card-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  transition: all 0.3s ease;
+}
+
+.card-subtitle {
+  font-size: 12px;
+  color: #C7FF2E;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.card-description {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  transition: all 0.3s ease;
+}
+
+/* Card Footer */
+.card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 80px 40px;
-  background: #fff;
-  gap: 40px;
 }
 
-.hero-text {
-  flex: 1;
-  min-width: 300px;
-  text-align: left;
+.card-line {
+  width: 32px;
+  height: 2px;
+  background: #2a2a2a;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.hero-text h1 {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #000;
-  line-height: 1.2;
-  text-align: left;
+.slider-card.active .card-line {
+  width: 56px;
+  background: #C7FF2E;
 }
 
-.hero-text p {
-  margin: 20px 0 30px;
-  color: #000;
-  font-size: 1.05rem;
-  max-width: 500px;
-  text-align: left;
+.card-status {
+  font-size: 10px;
+  color: #444;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-/* ======================================================
-   🖼 HERO IMAGE
-====================================================== */
-.hero-image {
-  width: 420px;
-  max-width: 100%;
-  object-fit: contain;
+.slider-card.active .card-status {
+  color: #C7FF2E;
 }
 
-/* ======================================================
-   📱 RESPONSIVE
-====================================================== */
-@media (max-width: 1300px) {
+/* Hover effect on active card */
+.slider-card.active:hover {
+  transform: translateY(-2px) scale(1.01) !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  box-shadow: 0 30px 50px -25px rgba(199, 255, 46, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .hero-title {
+    font-size: 52px;
+  }
+  
+  .slider-container {
+    width: 340px;
+  }
+  
+  .hero-container {
+    gap: 60px;
+  }
+  
+  .hero-stats {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 900px) {
   .hero {
-    padding: 70px 30px;
+    padding-top: 80px;
   }
-
-  .hero-text h1 {
-    font-size: 2.6rem;
+  
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 80px;
+    padding: 0 40px 80px 40px;
   }
-  .hero-text p {
-    max-width: 450px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
+  
+  .hero-content {
+    max-width: 100%;
     text-align: center;
   }
-
-  .hero-text {
-    width: 100%;
-    text-align: center;
-  }
-  .hero-text h1,
-  .hero-text p {
-    text-align: center;
-  }
-
-  .resi-box {
-    justify-content: center;
+  
+  .hero-description {
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
-
-  .courier-list {
+  
+  .hero-actions {
     justify-content: center;
   }
-
-  .hero-image {
-    margin-top: 25px;
-    max-width: 320px;
+  
+  .hero-stats {
+    justify-content: center;
+  }
+  
+  .hero-slider {
+    justify-content: center;
+    height: 580px;
+  }
+  
+  .hero-badge {
+    display: inline-block;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .hero {
-    padding: 60px 20px;
+    padding-top: 60px;
   }
-
-  .hero-text h1 {
-    font-size: 1.7rem;
+  
+  .hero-container {
+    padding: 0 24px 60px 24px;
+    gap: 60px;
   }
-
-  .resi-box input,
-  .resi-box button {
-    font-size: 13px;         /* ⬅️ mobile lebih ringkas */
-    padding: 9px 12px;
+  
+  .hero-title {
+    font-size: 36px;
+  }
+  
+  .hero-description {
+    font-size: 15px;
+  }
+  
+  .slider-container {
+    width: 300px;
+  }
+  
+  .slider-card {
+    padding: 24px;
+  }
+  
+  .card-title {
+    font-size: 20px;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .hero-button {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .card-metric {
+    display: none;
+  }
+  
+  .hero-stats {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .hero-stat {
+    align-items: center;
   }
 }
