@@ -102,6 +102,7 @@ export default function ModalLogin({ isOpen, onClose, onLogin }) {
     const redirectUri = `https://yuhuu.site/auth/web/google`;
     const scope = "openid email profile";
 
+    
     const googleAuthUrl =
       `https://accounts.google.com/o/oauth2/v2/auth` +
       `?client_id=${clientId}` +
