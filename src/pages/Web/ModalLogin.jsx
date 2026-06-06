@@ -11,6 +11,7 @@ import loginLocales from "../../locales/loginLocales";
 import {
   loginUser,
   saveTokens,
+  loginWithGoogle,
 } from "../../services/auth/login";
 
 export default function ModalLogin({ isOpen, onClose, onLogin }) {
@@ -97,8 +98,8 @@ export default function ModalLogin({ isOpen, onClose, onLogin }) {
 
   // Handler untuk Google Login
   const handleGoogleLogin = () => {
-    const clientId = "424973742981-7g8kjb308peguc13kebh526f2nii37c5.apps.googleusercontent.com";
-    const redirectUri = `https://posttest.co.id/auth/google/callback`;
+    const clientId = "744637953413-u6104aasju3ouis551arkrtiujias26t.apps.googleusercontent.com";
+    const redirectUri = `https://posttest.yuhuu.site/api/web/google`;
     const scope = "openid email profile";
 
     const googleAuthUrl =

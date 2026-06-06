@@ -10,7 +10,7 @@ import Beranda from "./pages/Beranda/Dashboard";
 import Topbar from "./components/Topbar";
 
 import Login from "./pages/Auth/Login";
-import GoogleCallback from "./pages/Auth/GoogleCallback";
+import GoogleCallback from "./pages/Api/GoogleCallback";
 import Signup from "./pages/Auth/Signup";
 import Forgot from "./pages/Auth/Forgot/ForgotPassword";
 import VerifyOtp from "./pages/Auth/Forgot/VerifyReset";
@@ -148,7 +148,7 @@ function App() {
       />
 
       {/* Public routes */}
-        <Route path="/auth/google/callback" element={<GoogleCallback />} />
+        <Route path="/api/google/callback" element={<GoogleCallback />} />
     <Route path="/en/auth/google/callback" element={<GoogleCallback />} />
     
       <Route path="/privacy" element={<PrivacyPolicy />} />

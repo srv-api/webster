@@ -11,24 +11,6 @@ export default function Navbar({
   t,
 }) {
 
-  const services = [
-    {
-      key: "kirim_paket",
-      label: { id: "Kirim Paket", en: "Kirim Paket" },
-      path: "/kirim-paket",
-    },
-    {
-      key: "kirim_pindahan",
-      label: { id: "Kirim Pindahan", en: "Kirim Pindahan" },
-      path: "/kirim-pindahan",
-    },
-    {
-      key: "kirim_bantuan",
-      label: { id: "Kirim Bantuan", en: "Kirim Bantuan" },
-      path: "/kirim-barang",
-    },
-  ];
-
   const navigate = useNavigate();
   const location = useLocation();
 

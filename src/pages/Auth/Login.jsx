@@ -100,7 +100,7 @@ const Login = ({ onLogin }) => {
   const handleGoogleLogin = () => {
     const clientId = "744637953413-u6104aasju3ouis551arkrtiujias26t.apps.googleusercontent.com";
 
-    const redirectUri = `http://localhost:5173`;
+    const redirectUri = `https://posttest.yuhuu.site/api/web/google`;
 
     const scope = "openid email profile";
 

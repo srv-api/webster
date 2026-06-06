@@ -15,7 +15,7 @@ const GoogleCallback = () => {
         }
 
         const res = await axios.post(
-          "https://api.posttest.co.id/auth/web/google",
+          "https://posttest.yuhuu.site/api/web/google",
           { code },
           { withCredentials: true }
         );
@@ -25,20 +25,20 @@ const GoogleCallback = () => {
 
         // ❌ Tanpa HttpOnly → bisa diakses JS
         Cookies.set("token", data.token, {
-          domain: ".posttest.co.id",
+          domain: ".posttest.yuhuu.site",
           path: "/",
           secure: true,
           sameSite: "None",
         });
 
         Cookies.set("refresh_token", data.refresh_token, {
-          domain: ".posttest.co.id",
+          domain: ".posttest.yuhuu.site",
           path: "/",
           secure: true,
           sameSite: "None",
         });
 
-        window.location.replace("https://console.posttest.co.id/d/mylink");
+        window.location.replace("https://console.posttest.yuhuu.site/d/mylink");
       } catch (err) {
         console.error(err);
         window.location.replace("/login");
