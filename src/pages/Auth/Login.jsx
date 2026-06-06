@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-// import { useGoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import loginLocales from "../../locales/loginLocales";
 import TurnstileComponent from "./TurnstileComponent";
 
@@ -98,9 +98,9 @@ const Login = ({ onLogin }) => {
   // 🔹 LOGIN DENGAN GOOGLE
   // -----------------------------
   const handleGoogleLogin = () => {
-    const clientId = "424973742981-7g8kjb308peguc13kebh526f2nii37c5.apps.googleusercontent.com";
+    const clientId = "744637953413-u6104aasju3ouis551arkrtiujias26t.apps.googleusercontent.com";
 
-    const redirectUri = `https://posttest.co.id/auth/google/callback`;
+    const redirectUri = `http://localhost:5173`;
 
     const scope = "openid email profile";
 
@@ -108,7 +108,7 @@ const Login = ({ onLogin }) => {
       `https://accounts.google.com/o/oauth2/v2/auth` +
       `?client_id=${clientId}` +
       `&redirect_uri=${encodeURIComponent(redirectUri)}` +
-      `&response_type=code` +     // ⬅️ INI PENTING
+      `&response_type=code` +     
       `&scope=${encodeURIComponent(scope)}` +
       `&access_type=offline` +
       `&prompt=consent`;

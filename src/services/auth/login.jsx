@@ -2,8 +2,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const API_KEY = "3f=Pr#g1@RU-nw=30";
-const AUTH_BASE_URL = "http://103.150.227.223:2356/auth";
-const WEB_BASE_URL = "http://103.150.227.223:2356/auth/web";
+const AUTH_BASE_URL = "http://103.150.227.223:2356/api";
+const WEB_BASE_URL = "http://103.150.227.223:2356/api/web";
 
 /**
  * 🔹 Login Manual (email / WhatsApp)
