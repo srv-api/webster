@@ -184,3 +184,21 @@ html, body {
     height: -webkit-fill-available;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-container,
+  .about-container,
+  .vision-container,
+  .faq-container {
+    padding: 0 20px; /* FIX UTAMA */
+  }
+
+  .hero, .about, .vision, .faq {
+    width: 100%;
+    overflow-x: hidden; /* cegah geser kanan */
+  }
+
+  body, html {
+    overflow-x: hidden; /* backup safety */
+  }
+}
