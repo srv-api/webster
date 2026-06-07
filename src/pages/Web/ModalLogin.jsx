@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
@@ -95,6 +95,26 @@ export default function ModalLogin({ isOpen, onClose, onLogin }) {
       setLoading(false);
     }
   };
+
+ useEffect(() => {
+  if (isOpen) {
+    // Kirim event bahwa modal terbuka
+    window.dispatchEvent(new CustomEvent('modalOpened'));
+    
+    // Cegah scroll
+    document.body.style.overflow = 'hidden';
+  } else {
+    // Kirim event bahwa modal tertutup
+    window.dispatchEvent(new CustomEvent('modalClosed'));
+    
+    // Kembalikan scroll
+    document.body.style.overflow = '';
+  }
+  
+  return () => {
+    document.body.style.overflow = '';
+  };
+}, [isOpen]);
 
   // Handler untuk Google Login
   const handleGoogleLogin = () => {

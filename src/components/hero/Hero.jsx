@@ -82,7 +82,7 @@ const Hero = () => {
           <div className="hero-actions">
             <button className="hero-button">Start Free Trial</button>
           </div>
-          <div className="hero-stats">
+          {/* <div className="hero-stats">
             <div className="hero-stat">
               <span className="stat-number">2M+</span>
               <span className="stat-label">Active Users</span>
@@ -91,7 +91,7 @@ const Hero = () => {
               <span className="stat-number">50M+</span>
               <span className="stat-label">PostTest Completed</span>
             </div>
-          </div>
+          </div> */}
         </div>
         
         <div className="hero-slider">

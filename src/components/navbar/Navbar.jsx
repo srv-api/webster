@@ -7,16 +7,15 @@ export default function Navbar({
   heroRef,
   aboutRef,
   priceRef,
-  onLoginClick ,
+  onLoginClick,
   t,
 }) {
-
   const navigate = useNavigate();
   const location = useLocation();
 
+  // ✅ PERTAMA: Deklarasikan semua state
   const [menuOpen, setMenuOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
-
   const dropdownRef = useRef(null);
 
   // ===============================
@@ -53,24 +52,47 @@ export default function Navbar({
   };
 
   const handleLogoClick = () => {
-  // kalau bukan di halaman home → pindah ke home
-  if (location.pathname !== `${langPrefix}/` && location.pathname !== "/") {
-    navigate(`${langPrefix}/`);
-    return;
-  }
+    if (location.pathname !== `${langPrefix}/` && location.pathname !== "/") {
+      navigate(`${langPrefix}/`);
+      return;
+    }
 
-  // kalau sudah di home → scroll ke atas / hero
-  if (heroRef?.current) {
-    heroRef.current.scrollIntoView({ behavior: "smooth" });
-  } else {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+    if (heroRef?.current) {
+      heroRef.current.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
 
-  setMenuOpen(false);
-};
+    setMenuOpen(false);
+  };
 
   // ===============================
-  // CLOSE DROPDOWN WHEN CLICK OUTSIDE
+  // ✅ KEDUA: useEffect untuk modal event (pindahkan ke sini)
+  // ===============================
+  useEffect(() => {
+    const handleModalEvent = () => {
+      // Tutup menu jika terbuka
+      if (menuOpen) {
+        setMenuOpen(false);
+      }
+      // Tutup dropdown service juga
+      if (serviceOpen) {
+        setServiceOpen(false);
+      }
+    };
+
+    // Dengarkan event dari modal
+    window.addEventListener('modalOpened', handleModalEvent);
+    window.addEventListener('modalClosed', handleModalEvent);
+    
+    return () => {
+      window.removeEventListener('modalOpened', handleModalEvent);
+      window.removeEventListener('modalClosed', handleModalEvent);
+    };
+  }, [menuOpen, serviceOpen]); // Dependency biar update
+
+  // ===============================
+  // KETIGA: Close dropdown when click outside
   // ===============================
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -79,9 +101,8 @@ export default function Navbar({
       }
     };
 
- document.addEventListener("click", handleClickOutside);
-    return () =>
-   document.removeEventListener("click", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   // ===============================
@@ -89,19 +110,16 @@ export default function Navbar({
   // ===============================
   return (
     <nav className="navbar">
-     <div className="logo-wrapper" onClick={handleLogoClick}>
-      <div className="logo-brand">
-        <span className="logo-p">P</span>
-
-        <span className="logo-o">
-          <span className="logo-o-inner"></span>
-        </span>
-
-        <span className="logo-rest">stTest</span>
-
-        <span className="logo-io">io</span>
+      <div className="logo-wrapper" onClick={handleLogoClick}>
+        <div className="logo-brand">
+          <span className="logo-p">P</span>
+          <span className="logo-o">
+            <span className="logo-o-inner"></span>
+          </span>
+          <span className="logo-rest">stTest</span>
+          <span className="logo-io">io</span>
+        </div>
       </div>
-    </div>
 
       {/* MOBILE TOGGLE */}
       <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>

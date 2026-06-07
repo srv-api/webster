@@ -16,8 +16,7 @@
   backdrop-filter: blur(12px);
   border-radius: 50px;    /* radius biar mengambang */
   box-shadow: 0 15px 35px rgba(226, 226, 226, 0.08);
-
-  z-index: 1000;
+  z-index: 900;
   flex-wrap: wrap;
 }
 body {

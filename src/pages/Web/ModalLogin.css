@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+   z-index: 1100;
   animation: fadeIn 0.3s ease;
     cursor: pointer;
 
@@ -96,11 +96,13 @@
 }
 
 .Toastify__toast-container {
+    z-index: 9999 !important; /* Pastikan toast di atas segalanya */
   font-size: 13px;
 }
 
 .Toastify__toast {
-  border-radius: 12px !important;
+    margin-top: 70px; /* Kasih jarak dari atas biar tidak ketutupan navbar */
+  border-radius: 20px !important;
 }
 
 @media (max-width: 640px) {
