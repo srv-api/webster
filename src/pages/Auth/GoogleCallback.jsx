@@ -15,7 +15,7 @@ const GoogleCallback = () => {
         }
 
         const res = await axios.post(
-          "https://posttest.yuhuu.site/api/web/google",
+          "http://103.150.227.223:2090/api/web/google",
           { code },
           { withCredentials: true }
         );
