@@ -99,7 +99,7 @@ export default function ModalLogin({ isOpen, onClose, onLogin }) {
   // Handler untuk Google Login
   const handleGoogleLogin = () => {
     const clientId = "744637953413-u6104aasju3ouis551arkrtiujias26t.apps.googleusercontent.com";
-    const redirectUri = `https://yuhuu.site/auth/web/google`;
+    const redirectUri = `https://yuhuu.site/auth/google/callback`;
     const scope = "openid email profile";
 
     
