@@ -153,6 +153,35 @@
   font-weight: 700;
 }
 
+.form-group input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  transform: scale(0.85);
+  cursor: pointer;
+  accent-color: #667eea;
+  margin-right: 4px;
+}
+
+/* Perkecil radio button di options container */
+.option-input input[type="radio"] {
+  width: 14px !important;
+  height: 14px !important;
+  transform: scale(0.85);
+  cursor: pointer;
+  accent-color: #667eea;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.form-group input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  transform: scale(0.85);
+  cursor: pointer;
+  accent-color: #667eea;
+  margin-right: 8px;
+}
+
 .form-group {
   margin-bottom: 25px;
 }

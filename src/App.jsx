@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Beranda from "./pages/Beranda/Dashboard";
+import Beranda from "./pages/Beranda/DashboardStats";
 import Topbar from "./components/Topbar";
 
 import Login from "./pages/Auth/Login";
@@ -16,6 +16,7 @@ import Forgot from "./pages/Auth/Forgot/ForgotPassword";
 import VerifyOtp from "./pages/Auth/Forgot/VerifyReset";
 import ResetPassword from "./pages/Auth/Forgot/ResetPassword";
 import Result from "./pages/ResultTest/List";
+import Create from "./pages/Beranda/Dashboard";
 import Users from "./pages/UserMerchant/List";
 import TransactionMethode from "./pages/TransactionMethode/Qris/List";
 import RoleUserPermission from "./pages/RoleUserPermission/List";
@@ -38,6 +39,7 @@ import NotFound from "./pages/Web/NotFound";
 import Cookies from "js-cookie";
 import "./App.css";
 import RoomClass from './pages/Class/RoomClass';
+import MultipleChoice from './pages/Beranda/MultipleChoice';
 
 function ProtectedLayout({ onLogout }) {
 
@@ -56,6 +58,7 @@ function ProtectedLayout({ onLogout }) {
           <Route path="/room-class/list" element={<RoomClass />} />
           <Route path="/user-merchant/list" element={<Users />} />
           <Route path="/result/list" element={<Result />} />
+          <Route path="/create/assessment" element={<Create />} />
           <Route path="/transaction-methode/qris/list" element={<TransactionMethode />} />
           <Route path="/permission/list" element={<Permission />} />
           <Route path="/role/list" element={<Role />} />
@@ -67,6 +70,7 @@ function ProtectedLayout({ onLogout }) {
           <Route path="/subscribe/list" element={<Subscribe />} />
           <Route path="/d/beranda" element={<Beranda />} />
           <Route path="/doc/prosess" element={<Document />} />
+          <Route path="/create/multiple-choice" element={<MultipleChoice />} />
 
           {/* ... semua route lainnya tanpa /id */}
 
@@ -75,6 +79,7 @@ function ProtectedLayout({ onLogout }) {
           <Route path="/en/setting" element={<Setting />} />
           <Route path="/en/user-merchant/list" element={<Users />} />
           <Route path="/en/result/list" element={<Result />} />
+          <Route path="/en/create/assessment" element={<Create />} />
           <Route path="/en/transaction-methode/list" element={<TransactionMethode />} />
           <Route path="/en/permission/list" element={<Permission />} />
           <Route path="/en/role/list" element={<Role />} />
@@ -87,6 +92,7 @@ function ProtectedLayout({ onLogout }) {
           <Route path="/en/preview" element={<PreviewPage  />} />
           <Route path="/en/d/beranda" element={<Beranda />} />
           <Route path="/en/doc/prosess" element={<Document />} />
+          <Route path="/en/create/multiple-choice" element={<MultipleChoice />} />
 
 
           {/* ... semua route English dengan /en */}

@@ -17,18 +17,33 @@
   cursor: pointer;
   background: transparent;
   outline: none;
+  transition: all 0.3s ease;
 }
 
 /* Button Design */
 .dashboard-btn,
-.create-btn {
+.create-btn,
+.library-btn {
   background: #FFFFFF;
   border-radius: 12px;
   padding: 14px 32px;
   box-shadow: 0 1px 3px rgba(64, 66, 68, 0.1);
-  transition: none;
   position: relative;
   border: 1px solid #E5E7EB;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-btn:hover,
+.create-btn:hover,
+.library-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(64, 66, 68, 0.15);
+}
+
+.dashboard-btn:active,
+.create-btn:active,
+.library-btn:active {
+  transform: translateY(0);
 }
 
 /* Button Content */
@@ -62,6 +77,14 @@
   color: #10B981;
 }
 
+.library-btn .btn-text {
+  color: #8B5CF6;
+}
+
+.library-btn .btn-icon {
+  color: #8B5CF6;
+}
+
 /* Dashboard Button */
 .dashboard-btn {
   border-bottom: 2px solid #4F46E5;
@@ -70,6 +93,11 @@
 /* Create Button */
 .create-btn {
   border-bottom: 2px solid #10B981;
+}
+
+/* Library Button */
+.library-btn {
+  border-bottom: 2px solid #8B5CF6;
 }
 
 /* Responsive Design */
@@ -81,7 +109,8 @@
   }
   
   .dashboard-btn,
-  .create-btn {
+  .create-btn,
+  .library-btn {
     padding: 10px 24px;
   }
   
@@ -103,7 +132,8 @@
   }
   
   .dashboard-btn,
-  .create-btn {
+  .create-btn,
+  .library-btn {
     width: 100%;
     justify-content: center;
   }
@@ -115,7 +145,8 @@
 
 /* Focus Styles */
 .dashboard-btn:focus-visible,
-.create-btn:focus-visible {
+.create-btn:focus-visible,
+.library-btn:focus-visible {
   outline: 2px solid #4F46E5;
   outline-offset: 2px;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/ButtonGroup.css';
 
-const ButtonGroup = ({ onDashboardClick, onCreateClick }) => {
+const ButtonGroup = ({ onDashboardClick, onCreateClick, onLibraryClick }) => {
   const buttons = [
     {
       id: 'dashboard',
@@ -16,6 +16,13 @@ const ButtonGroup = ({ onDashboardClick, onCreateClick }) => {
       icon: '+',
       onClick: onCreateClick,
       className: 'create-btn',
+    },
+    {
+      id: 'library',
+      label: 'Library',
+      icon: '📚',
+      onClick: onLibraryClick,
+      className: 'library-btn',
     }
   ];
 
@@ -39,6 +46,35 @@ const ButtonGroup = ({ onDashboardClick, onCreateClick }) => {
                 >
                   <path 
                     d="M12 5V19M5 12H19" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round"
+                  />
+                </svg>
+              ) : btn.icon === '📚' ? (
+                <svg 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M4 6H20V18H4V6Z" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path 
+                    d="M4 6L12 12L20 6" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path 
+                    d="M12 12V18" 
                     stroke="currentColor" 
                     strokeWidth="2" 
                     strokeLinecap="round"

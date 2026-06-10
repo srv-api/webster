@@ -213,7 +213,7 @@ const MultipleChoice = ({ onBack, assessmentData }) => {
           <div className="editor-header">
             <h3>Question {currentQuestion + 1}</h3>
             <button className="submit-btn" onClick={handleSubmit} style={{ marginTop: '10px' }}>
-              Review & Preview
+              Review & Save
             </button>
           </div>
 
