@@ -30,7 +30,6 @@ import {
 } from "react-icons/fa";
 
 import { fetchSider } from "./sidebarApi";
-import SubscribeModal from "../pages/Subscribe/SubscribeModal";
 import Setting from "../pages/Setting/Setting";
 
 const iconMap = {
@@ -55,12 +54,11 @@ const location = useLocation();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [showSubscribeModal, setShowSubscribeModal] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
   // Static menu
   const staticMenuItems = [
-    { label: "Home", to: `${basePath}/d/beranda`, icon: <FaHouseUser /> },
+    { label: "Home", to: `${basePath}/d/home`, icon: <FaHouseUser /> },
     { label: "Results", to: `${basePath}/result/list`, icon: <FaBoxOpen /> },
     { label: "Category", to: `${basePath}/category/list`, icon: <FaTags /> },
     { label: "Merk", to: `${basePath}/merk/list`, icon: <FaTrademark /> },
@@ -85,7 +83,6 @@ const location = useLocation();
 //     { label: "Messages", to: `${basePath}/messages`, icon: <FaEnvelope /> },
 //     { label: "Support", to: `${basePath}/support`, icon: <FaLifeRing /> },
 //     { label: "Users", to: `${basePath}/user-merchant/list`, icon: <FaUsersCog /> },
-    { label: "Subscribe", action: () => setShowSubscribeModal(true), icon: <FaBell /> },
     { type: "divider" },
     { label: "Setting", action: () => setShowSetting(true), icon: <FaUserCog /> },
   ];
@@ -292,11 +289,6 @@ const renderMenu = (items) =>
           {!loading && !error && renderMenu(dynamicMenu)}
         </ul>
       </div>
-
-      {/* MODAL SUBSCRIBE */}
-      {showSubscribeModal && (
-        <SubscribeModal onClose={() => setShowSubscribeModal(false)} />
-      )}
 
       {/* MODAL SETTING */}
       {showSetting && (

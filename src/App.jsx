@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Beranda from "./pages/Beranda/DashboardStats";
+import Home from "./pages/Home/DashboardStats";
 import Topbar from "./components/Topbar";
 
 import Login from "./pages/Auth/Login";
@@ -16,7 +16,7 @@ import Forgot from "./pages/Auth/Forgot/ForgotPassword";
 import VerifyOtp from "./pages/Auth/Forgot/VerifyReset";
 import ResetPassword from "./pages/Auth/Forgot/ResetPassword";
 import Result from "./pages/ResultTest/List";
-import Create from "./pages/Beranda/Dashboard";
+import Create from "./pages/Home/Dashboard";
 import Users from "./pages/UserMerchant/List";
 import TransactionMethode from "./pages/TransactionMethode/Qris/List";
 import RoleUserPermission from "./pages/RoleUserPermission/List";
@@ -31,7 +31,6 @@ import PrivacyPolicy from "./pages/Web/PrivacyPolicy";
 import SignupForm from "./pages/Auth/SignupForm";
 import OtpForm from "./pages/Auth/OtpForm";
 import Setting from "./pages/Setting/Setting";
-import Subscribe from "./pages/Subscribe/SubscribeModal";
 import PreviewPage  from "./pages/Web/preview/PreviewPage";
 import BlogList from "./pages/Web/blog/BlogList";
 import BlogDetail from "./pages/Web/blog/BlogDetail";
@@ -39,7 +38,8 @@ import NotFound from "./pages/Web/NotFound";
 import Cookies from "js-cookie";
 import "./App.css";
 import RoomClass from './pages/Class/RoomClass';
-import MultipleChoice from './pages/Beranda/MultipleChoice';
+import Library from './pages/Library/Library';
+import MultipleChoice from './pages/Home/MultipleChoice';
 
 function ProtectedLayout({ onLogout }) {
 
@@ -67,10 +67,10 @@ function ProtectedLayout({ onLogout }) {
           <Route path="/user/list" element={<UserList />} />
           <Route path="/blog/content_setting" element={<Cms />} />
           <Route path="/content/setting" element={<BlogSetting />} />
-          <Route path="/subscribe/list" element={<Subscribe />} />
-          <Route path="/d/beranda" element={<Beranda />} />
+          <Route path="/d/home" element={<Home />} />
           <Route path="/doc/prosess" element={<Document />} />
           <Route path="/create/multiple-choice" element={<MultipleChoice />} />
+          <Route path="/library/list" element={<Library />} />
 
           {/* ... semua route lainnya tanpa /id */}
 
@@ -88,17 +88,16 @@ function ProtectedLayout({ onLogout }) {
           <Route path="/en/user/list" element={<UserList />} />
           <Route path="/en/content_setting" element={<Cms />} />
           <Route path="/en/blog/setting" element={<BlogSetting />} />
-          <Route path="/en/subscribe/list" element={<Subscribe />} />
           <Route path="/en/preview" element={<PreviewPage  />} />
-          <Route path="/en/d/beranda" element={<Beranda />} />
+          <Route path="/en/d/home" element={<Home />} />
           <Route path="/en/doc/prosess" element={<Document />} />
           <Route path="/en/create/multiple-choice" element={<MultipleChoice />} />
-
+          <Route path="/library/list" element={<Library />} />
 
           {/* ... semua route English dengan /en */}
 
           {/* Redirect default root */}
-          <Route path="/" element={<Navigate to="/d/beranda" replace />} />
+          <Route path="/" element={<Navigate to="/d/home" replace />} />
         </Routes>
       </div>
     </div>
@@ -146,7 +145,7 @@ function App() {
         path="/"
         element={
           token ? (
-            <Navigate to="/d/beranda" replace />
+            <Navigate to="/d/home" replace />
           ) : (
             <LandingPage />
           )
@@ -182,21 +181,21 @@ function App() {
       {/* Auth routes */}
       <Route
         path="/login"
-        element={token ? <Navigate to="/d/beranda" replace /> : <Login onLogin={handleLoginSuccess} />}
+        element={token ? <Navigate to="/d/home" replace /> : <Login onLogin={handleLoginSuccess} />}
       />
       <Route
     path="/en/login"
     element={
-      token ? <Navigate to="/end/d/beranda" replace /> : <Login onLogin={handleLoginSuccess} />
+      token ? <Navigate to="/end/d/home" replace /> : <Login onLogin={handleLoginSuccess} />
     }
   />
       <Route
         path="/signup"
-        element={token ? <Navigate to="/d/beranda" replace /> : <Signup />}
+        element={token ? <Navigate to="/d/home" replace /> : <Signup />}
       />
       <Route
         path="/en/signup"
-        element={token ? <Navigate to="/en/beranda" replace /> : <Signup />}
+        element={token ? <Navigate to="/en/home" replace /> : <Signup />}
       />
 
       {/* Protected routes */}

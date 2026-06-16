@@ -690,3 +690,85 @@
     height: 26px;
   }
 }
+
+/* Image Upload Styles - ONLY ADD THIS */
+.image-upload-container {
+  margin-top: 10px;
+}
+
+.upload-area {
+  border: 2px dashed #dee2e6;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background: #f8f9fa;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.upload-area:hover {
+  border-color: #667eea;
+  background: #667eea08;
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.upload-hint {
+  font-size: 11px;
+  color: #adb5bd;
+  font-weight: normal;
+}
+
+.image-preview {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #f8f9fa;
+  padding: 8px;
+  border: 1px solid #eef2f6;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #fa5252;
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.remove-image-btn:hover {
+  transform: scale(1.1);
+  background: #e03131;
+}
+
+.image-indicator {
+  font-size: 12px;
+  margin-right: 4px;
+}

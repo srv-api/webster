@@ -63,7 +63,7 @@ export default function NotFound() {
               cursor: "pointer",
             }}
           >
-            {language === "en" ? "Back to Home" : "Kembali ke Beranda"}
+            {language === "en" ? "Back to Home" : "Kembali ke Home"}
           </button>
 
         </div>
