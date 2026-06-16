@@ -42,7 +42,6 @@ const CreateAssessmentModal = ({ isOpen, onClose }) => {
       title: 'Multiple Choice',
       description: 'Select one correct answer from multiple options',
       icon: '→',
-      badge: '✅',
       path: '/create/multiple-choice' // Add path for navigation
     },
     {
@@ -50,15 +49,13 @@ const CreateAssessmentModal = ({ isOpen, onClose }) => {
       title: 'Multi-select',
       description: 'Select all correct answers from multiple options',
       icon: '✓✗',
-      badge: '☑️'
     },
     {
       id: 'true-false',
       title: 'True or False',
       description: 'Determine if the statement is true or false',
       icon: '✓✗',
-      badge: 'T/F'
-    }
+    },
   ];
 
   const handleSelectType = (type) => {

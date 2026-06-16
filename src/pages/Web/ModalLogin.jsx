@@ -83,7 +83,7 @@ export default function ModalLogin({ isOpen, onClose, onLogin }) {
           // Tutup modal
           onClose();
           // Reload page untuk refresh token dan redirect ke dashboard
-          window.location.href = "/d/beranda";
+          window.location.href = "/d/home";
         }, 1500);
 
       } else {

@@ -174,33 +174,33 @@ const DataTable = () => {
   return (
     <div className="nilai-container">
       {/* Statistics Cards */}
-      <div className="stats-grid">
-        <div className="stat-card">
+      <div className="dash-grid">
+        <div className="dash-card">
           <div className="stat-icon">📈</div>
-          <div className="stat-content">
+          <div className="dash-content">
             <span className="stat-label">Class Average</span>
-            <span className="stat-number">{stats.totalAverage}</span>
+            <span className="dash-number">{stats.totalAverage}</span>
           </div>
         </div>
-        <div className="stat-card">
+        <div className="dash-card">
           <div className="stat-icon">🏆</div>
-          <div className="stat-content">
+          <div className="dash-content">
             <span className="stat-label">Highest Score</span>
-            <span className="stat-number">{stats.highestScore}</span>
+            <span className="dash-number">{stats.highestScore}</span>
           </div>
         </div>
-        <div className="stat-card">
+        <div className="dash-card">
           <div className="stat-icon">📉</div>
-          <div className="stat-content">
+          <div className="dash-content">
             <span className="stat-label">Lowest Score</span>
-            <span className="stat-number">{stats.lowestScore}</span>
+            <span className="dash-number">{stats.lowestScore}</span>
           </div>
         </div>
-        <div className="stat-card">
+        <div className="dash-card">
           <div className="stat-icon">👨‍🎓</div>
-          <div className="stat-content">
+          <div className="dash-content">
             <span className="stat-label">Total Participants</span>
-            <span className="stat-number">{stats.totalParticipants}</span>
+            <span className="dash-number">{stats.totalParticipants}</span>
           </div>
         </div>
       </div>
@@ -208,7 +208,7 @@ const DataTable = () => {
       {/* Subject Averages */}
       <div className="subject-stats">
         <div className="subject-stats-title">📚 Average per Subject</div>
-        <div className="subject-stats-grid">
+        <div className="subject-dash-grid">
           <div className="subject-stat-item">
             <span className="subject-name">Mathematics</span>
             <span className="subject-average">{stats.subjectAverages.matematika}</span>

@@ -12,7 +12,8 @@ const MultipleChoice = ({ onBack, assessmentData }) => {
       options: [{ id: 1, text: '', isCorrect: false }],
       explanation: '',
       placeholder: '',
-      required: true
+      required: true,
+      image: null
     }
   ]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -29,7 +30,8 @@ const MultipleChoice = ({ onBack, assessmentData }) => {
         options: [{ id: 1, text: '', isCorrect: false }],
         explanation: '',
         placeholder: '',
-        required: true
+        required: true,
+        image: null
       }
     ]);
     setCurrentQuestion(questions.length);
@@ -50,6 +52,42 @@ const MultipleChoice = ({ onBack, assessmentData }) => {
     updatedQuestions[currentQuestion][field] = value;
     setQuestions(updatedQuestions);
   };
+
+const handleImageUpload = (e) => {
+  const file = e.target.files[0];
+  if (file && (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/jpg')) {
+    if (file.size > 10 * 1024 * 1024) {
+      alert('File too large! Max 10MB');
+      return;
+    }
+    
+    // SIMPAN FILE OBJECT - BUKAN BLOB URL
+    updateQuestion('image', file);  // ← Ini File object
+    
+    // Buat preview URL untuk ditampilkan (hanya untuk preview)
+    const previewUrl = URL.createObjectURL(file);
+    updateQuestion('imagePreview', previewUrl);
+    
+    console.log("Image uploaded:", {
+      name: file.name,
+      size: file.size,
+      type: file.type,
+      isFile: file instanceof File
+    });
+  } else {
+    alert('Please upload a valid image file (JPEG, PNG, JPG)');
+  }
+};
+
+const removeImage = () => {
+  // Revoke preview URL untuk mencegah memory leak
+  if (questions[currentQuestion].imagePreview) {
+    URL.revokeObjectURL(questions[currentQuestion].imagePreview);
+  }
+  updateQuestion('image', null);
+  updateQuestion('imagePreview', null);
+};
+
 
   const addOption = () => {
     const updatedQuestions = [...questions];
@@ -88,30 +126,88 @@ const MultipleChoice = ({ onBack, assessmentData }) => {
     setQuestions(updatedQuestions);
   };
 
-  const handleSubmit = () => {
-    const isValid = questions.every(q => {
-      if (q.type === 'multiple_choice') {
-        return q.text.trim() !== '' && q.options.some(opt => opt.text.trim() !== '');
-      } else {
-        return q.text.trim() !== '';
-      }
-    });
+const handleSubmit = () => {
+  // Validasi
+  const isValid = questions.every(q => {
+    if (q.type === 'multiple_choice') {
+      return q.text.trim() !== '' && q.options.some(opt => opt.text.trim() !== '');
+    } else {
+      return q.text.trim() !== '';
+    }
+  });
+  
+  if (!isValid) {
+    alert('Please fill in all question texts and required fields');
+    return;
+  }
+  
+  // Validasi correct answer untuk multiple choice
+  const hasCorrectAnswer = questions.every(q => {
+    if (q.type === 'multiple_choice') {
+      return q.options.some(opt => opt.isCorrect === true);
+    }
+    return true;
+  });
+  
+  if (!hasCorrectAnswer) {
+    alert('Please mark the correct answer for each multiple choice question');
+    return;
+  }
+  
+  // Siapkan data untuk disimpan ke localStorage
+  const questionsToSave = questions.map(q => {
+    const questionCopy = { ...q };
     
-    if (!isValid) {
-      alert('Please fill in all question texts and required fields');
-      return;
+    // PENTING: Pastikan image adalah File object
+    if (q.image && q.image instanceof File) {
+      // File object - simpan langsung
+      questionCopy.image = q.image;
+      console.log(`Saving File object for question ${q.id}:`, {
+        name: q.image.name,
+        size: q.image.size,
+        type: q.image.type
+      });
+    } else if (q.image && typeof q.image === 'string' && q.image.startsWith('blob:')) {
+      // JANGAN SIMPAN BLOB URL! Ini tidak bisa diupload
+      console.warn(`Question ${q.id} has blob URL, removing it`);
+      questionCopy.image = null;
+    } else {
+      questionCopy.image = null;
     }
     
-    // Save data to localStorage or state management
-    localStorage.setItem('assessmentData', JSON.stringify({
-      title: title,
-      questions: questions,
-      timestamp: new Date().toISOString()
-    }));
+    // Simpan preview untuk tampilan (optional)
+    if (q.imagePreview) {
+      questionCopy.imagePreview = q.imagePreview;
+    }
     
-    // Navigate to preview page
-    navigate('/preview');
+    return questionCopy;
+  });
+  
+  // Data lengkap
+  const assessmentDataToSave = {
+    title: title || 'Untitled Assessment',
+    questions: questionsToSave,
+    timestamp: new Date().toISOString(),
+    totalQuestions: questions.length
   };
+  
+  // Simpan ke localStorage
+  localStorage.setItem('assessmentData', JSON.stringify(assessmentDataToSave));
+  
+  // Verifikasi data tersimpan dengan benar
+  const savedData = JSON.parse(localStorage.getItem('assessmentData'));
+  console.log("Saved to localStorage:");
+  savedData.questions.forEach((q, idx) => {
+    console.log(`Question ${idx + 1}:`, {
+      text: q.text,
+      hasImage: !!q.image,
+      isFile: q.image instanceof File,
+      imageType: q.image ? typeof q.image : 'null'
+    });
+  });
+  
+  navigate('/preview');
+};
 
   const changeQuestionType = (type) => {
     const updatedQuestions = [...questions];
@@ -141,7 +237,6 @@ const MultipleChoice = ({ onBack, assessmentData }) => {
 
   return (
     <div className="multiple-choice-container">
-      {/* Editable Title Header */}
       <div className="assessment-title-header">
         {isEditingTitle ? (
           <div className="title-edit-container">
@@ -179,6 +274,7 @@ const MultipleChoice = ({ onBack, assessmentData }) => {
                 <span className="question-preview">
                   {q.text || `Untitled ${getQuestionTypeLabel(q.type)}`}
                 </span>
+                {q.image && <span className="image-indicator">🖼️</span>}
                 <span style={{ 
                   fontSize: '10px', 
                   background: q.type === 'free_text' ? '#51cf66' : '#667eea',
@@ -212,7 +308,7 @@ const MultipleChoice = ({ onBack, assessmentData }) => {
         <div className="question-editor">
           <div className="editor-header">
             <h3>Question {currentQuestion + 1}</h3>
-            <button className="submit-btn" onClick={handleSubmit} style={{ marginTop: '10px' }}>
+            <button className="submit-btn" onClick={handleSubmit}>
               Review & Save
             </button>
           </div>
@@ -234,9 +330,42 @@ const MultipleChoice = ({ onBack, assessmentData }) => {
                   checked={questions[currentQuestion].type === 'free_text'}
                   onChange={() => changeQuestionType('free_text')}
                 />
-                Free Text (e.g., Name, Email, etc.)
+                Free Text
               </label>
             </div>
+          </div>
+
+          <div className="form-group">
+            <label>Question Image (Optional)</label>
+            <div className="image-upload-container">
+  {questions[currentQuestion].imagePreview ? (
+    <div className="image-preview">
+      <img 
+        src={questions[currentQuestion].imagePreview} 
+        alt="Question illustration"
+        style={{ maxWidth: '100%', maxHeight: '200px', objectFit: 'contain' }}
+      />
+      <button type="button" className="remove-image-btn" onClick={removeImage}>
+        ✕ Remove
+      </button>
+    </div>
+  ) : (
+    <div className="upload-area">
+      <input
+        type="file"
+        accept="image/jpeg,image/png,image/jpg"
+        onChange={handleImageUpload}
+        id={`image-upload-${currentQuestion}`}
+        style={{ display: 'none' }}
+      />
+      <label htmlFor={`image-upload-${currentQuestion}`} className="upload-label">
+        <span>🖼️</span>
+        <span>Click to Upload Image</span>
+        <span className="upload-hint">JPEG, PNG only (Max 5MB)</span>
+      </label>
+    </div>
+  )}
+</div>
           </div>
 
           <div className="form-group">

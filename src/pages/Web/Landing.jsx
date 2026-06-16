@@ -6,7 +6,6 @@ import Hero from "../../components/hero/Hero";
 import About from "../../components/about/About";
 import Footer from "../../components/footer/Footer";
 import FAQ from "../../components/faq/FAQ";
-import { trackPackage } from "../../services/tracking/trackingApi";
 import Vision from "../../components/vision/Vision";
 import ModalLogin from "./ModalLogin"; // IMPORT MODAL
 
@@ -35,33 +34,6 @@ export default function LandingPage() {
     data: null,
   });
 
-  const handleTrack = async ({ courier, resi }) => {
-    try {
-      setLoading(true);
-      setError("");
-
-      const result = await trackPackage({ courier, resi });
-
-      setTracking({
-        courier,
-        resi,
-        data: result.data,
-      });
-
-      setTimeout(() => {
-        trackingRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 150);
-    } catch (err) {
-      setError("Gagal mengambil data resi");
-      setTracking({ courier: "", resi: "", data: null });
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleLoginSuccess = () => {
     console.log("Login success");
     // Refresh user state atau redirect
@@ -80,7 +52,7 @@ export default function LandingPage() {
       />
 
       {/* HERO */}
-      <Hero heroRef={heroRef} t={t} onTrack={handleTrack} />
+      <Hero heroRef={heroRef} t={t} />
 
       {/* TRACKING RESULT */}
       <div ref={trackingRef}>

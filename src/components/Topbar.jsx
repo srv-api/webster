@@ -54,15 +54,15 @@ const Topbar = ({ onToggleSidebar }) => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("access_token");
     navigate("/login");
     setOpenDropdown(null);
     setIsMobileMenuOpen(false);
   };
 
   const handleHomeClick = () => {
-    navigate(`${basePath}/d/beranda`);
+    navigate(`${basePath}/d/home`);
     setOpenDropdown(null);
     setIsMobileMenuOpen(false);
   };
@@ -80,7 +80,7 @@ const Topbar = ({ onToggleSidebar }) => {
   };
 
   const handleLibraryClick = () => {
-    navigate(`${basePath}/room-class/list`);
+    navigate(`${basePath}/library/list`);
     setOpenDropdown(null);
     setIsMobileMenuOpen(false);
   };
